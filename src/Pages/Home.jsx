@@ -1,13 +1,13 @@
 import React from 'react'
 import NavBar from '../Components/NavBar/NavBar'
 import Footer from '../Components/Footer/Footer'
+import FrontPage from '../Components/FrontPage/FrontPage'
 
 const Home = () => {
   return (
-    <div>
+    <div className='bg-[#f0eeee]'>
       <NavBar/>
-      Home Component
-      <div className='h-[100vh]'>njjn</div>
+      <FrontPage/>
       <Footer />
     </div>
   )
