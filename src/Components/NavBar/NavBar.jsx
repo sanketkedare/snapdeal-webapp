@@ -11,7 +11,7 @@ const NavBar = () => {
 
       {/* Main NavBar */}
       <div className="bg-[#e40046] py-2">
-        <div className="flex justify-between items-center  p-1 w-[90%] m-auto">
+        <div className="flex justify-between items-center w-[90%] m-auto">
           {/* WebSite Logo */}
           <NavLogo />
 
