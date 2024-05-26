@@ -10,7 +10,7 @@ const NavButtons = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="flex gap-8 text-[#ffffff] h-full relative"> {/* Ensure parent has relative positioning */}
+    <div className="flex gap-8 text-[#ffffff] h-full relative">
       {showAuth && <Authentication setShowAuth={setShowAuth} />}
       
       {/* Cart */}
