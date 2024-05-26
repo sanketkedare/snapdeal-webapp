@@ -10,7 +10,7 @@ const NavBar = () => {
       <UpperNavBar />
 
       {/* Main NavBar */}
-      <div className="bg-[#e40046] py-2">
+      <div className="bg-[#e40046] py-2 sticky">
         <div className="flex justify-between items-center w-[90%] m-auto">
           {/* WebSite Logo */}
           <NavLogo />

@@ -15,7 +15,7 @@ const LocationComponent = () => {
   return (
     <div className="p-2 w-1/4 border ml-2">
       {showLocation ? (
-        <div className="bg-white w-[90%] h-full rounded-sm p-2 shadow-sm relative flex-col m-auto justify-center">
+        <div className="bg-white w-[90%] h-full rounded-sm p-2 shadow-sm  flex-col m-auto justify-center">
           <img alt="location" src="/Location.png" className="m-auto" />
           <p className="text-[12px] text-center text-gray-500">
             Your Delevery Pincode
@@ -39,7 +39,7 @@ const LocationComponent = () => {
               Pincode : {pincode}
             </div>
           )}
-          <div className="flex gap-2 w-full absolute bottom-1 left-0">
+          <div className="flex gap-2 w-full  bottom-1 left-0">
             <button
               className="w-2/3 bg-black text-white shadow-sm py-1 text-[13px] rounded-sm"
               onClick={serchLocation}
@@ -55,7 +55,7 @@ const LocationComponent = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-white w-[90%] h-full rounded-sm shadow-sm relative flex-col  m-auto justify-center">
+        <div className="bg-white w-[90%] h-full rounded-sm shadow-sm  flex-col  m-auto justify-center">
           <img alt="snapdeal" src="/snapdeal.png" />
           <p className="text-[12px] text-center mt-5 my-3 text-gray-500 w-[50%] m-auto">
             Login to your Snapdeal account
@@ -64,7 +64,7 @@ const LocationComponent = () => {
             LOG IN
           </button>
 
-          <div className="flex justify-evenly w-full absolute bottom-1 left-0 items-center">
+          <div className="flex justify-evenly w-full bottom-1 left-0 items-center">
             <div className="flex gap-2">
               <h1 className="text-[12px] text-gray-800">New user ?</h1>
               <Link className="text-[12px] text-sky-700 font-semibold">

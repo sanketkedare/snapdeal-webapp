@@ -1,17 +1,22 @@
 import React from "react";
 import { data } from "../../Utils/categoriesData";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   return (
-    <div className="w-[15%] bg-[#ffff] h-full p-3 shadow-lg relative">
+    <div className="w-[15%] bg-[#ffff] p-3 shadow-lg relative h-[110vh] ">
       <h1 className="text-sm">Top Categories</h1>
       <div className="my-2 p-2">
         {data &&
           data.map((item) => (
-            <div key={item.name} className="py-3 capitalize text-sm flex gap-2">
+
+            <Link to={`/products`}
+              key={item.name}
+              className="py-3 capitalize text-sm flex gap-2 hover:bg-gray-200 p-1"
+            >
               <img src={item.img} className="w-5 rounded-full" />
               <h1>{item.name}</h1>
-            </div>
+            </Link>
           ))}
       </div>
       <div className="absolute bottom-1 left-0 w-full h-[100px] flex justify-center items-center px-2 m-auto">

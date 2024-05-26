@@ -12,12 +12,11 @@ const FrontPage = () => {
   const { pathname } = useLocation();
   return (
     <>
-      <Outlet />
-      {pathname === "/" && (
-        <div className="w-[90%] h-[110vh]  m-auto mt-2 flex gap-2">
-          <Categories />
+      <div className="w-[90%] m-auto mt-2 flex gap-2">
+        <Categories />
+        {pathname === "/" ? (
           <div className="bg-[#ffff] shadow-sm w-[85%] p-3">
-            <div className="flex h-[50%]  justify-between">
+            <div className="flex h-[50%] justify-between">
               <div className="w-3/4">
                 <OptionsSlider />
               </div>
@@ -26,8 +25,10 @@ const FrontPage = () => {
 
             <RecentProducts />
           </div>
-        </div>
-      )}
+        ) : (
+          <Outlet />
+        )}
+      </div>
       <TrendingProducts />
       <Advertisement />
       <Features />

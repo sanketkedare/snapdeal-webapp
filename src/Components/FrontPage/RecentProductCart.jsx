@@ -2,7 +2,6 @@ import React from 'react'
 import Rating from './RatingComponent'
 
 const RecentProductCart = ({item}) => {
-    console.log(item)
   return (
     <div className='w-[500px] border px-3 p-2'>
       <img src={item.image} className='h-32 m-auto'/>

@@ -3,8 +3,14 @@ import "./App.css";
 import Home from "./Pages/Home";
 import Authentication from "./Pages/Authentication";
 import Products from "./Pages/Products";
+import { useSelector } from 'react-redux';
+
 
 function App() {
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const user = useSelector((state) => state.user.user);  
+  console.log("user", user); 
+  console.log("isAuthenticated", isAuthenticated);
   return (
     <BrowserRouter>
       <Routes>
