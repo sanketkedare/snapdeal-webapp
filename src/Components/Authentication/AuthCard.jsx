@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
+import { logInWithEmailAndPassword, signUpwithEmailPassWord, signUpWithGoogle } from "./firebaseAuth";
 
 const AuthCard = ({ setShowAuth }) => {
-  const [value, setValue] = useState("");
-  const [otp, setOtp] = useState(0);
-  const [otpOn, setOptOn] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const inputHandeler = (e) => {
-    otpOn ? setOtp(e.target.value) : setValue(e.target.value);
+  const signUpHandeler = async () => {
+    const res = await signUpwithEmailPassWord(email, password);
+    console.log("response",res);
+    setShowAuth(false)
   };
-  const submitHandeler = () => {
-    otpOn ? setShowAuth(false) : setOptOn(true);
-    setValue("");
+
+  const signInHandeler = async() => {
+    const res = await logInWithEmailAndPassword(email, password);
+    console.log("response",res);
+    setShowAuth(false)
   };
 
   return (
@@ -27,30 +31,48 @@ const AuthCard = ({ setShowAuth }) => {
           Login/Sign Up On Snapdeal
         </p>
         <p className="text-center w-[70%] m-auto my-4 text-[15px] text-gray-500">
-          Please provide your Mobile Number or Email to Login/ Sign Up on
-          Snapdeal
+          Please provide your Email to Login/ Sign Up on Snapdeal
         </p>
 
         <input
-          type="text"
-          placeholder={otpOn ? `Enter OTP` : `Mobile Number/Email`}
+          type="email"
+          placeholder="Enter your Email"
           className="w-full my-4 p-2 py-4"
-          onChange={inputHandeler}
-          value={value}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full mb-4 p-2 py-4"
+          required
         />
 
-        <button
-          className="p-2 py-4 w-full m-auto text-center bg-red-600 text-white uppercase font-semibold"
-          onClick={submitHandeler}
-        >
-          {otpOn ? "Submit otp " : "Continue"}
-        </button>
+        <div className="flex items-center justify-between gap-2">
+          <button
+            className="rounded-xl p-2 py-2 w-1/2 m-auto text-center bg-red-600 text-white uppercase font-semibold"
+            onClick={signUpHandeler}
+          >
+            Sign Up
+          </button>
+
+          <button
+            className="rounded-xl p-2 py-2 w-1/2 m-auto text-center bg-sky-600 text-white uppercase font-semibold"
+            onClick={signInHandeler}
+          >
+            Log in
+          </button>
+        </div>
 
         <div className="w-full">
           <p className="text-sm text-gray-400 text-center my-4">
             or Login Using
           </p>
-          <button className="shadow-2xl w-full text-center border border-black p-2 my-2 relative">
+          <button className="shadow-2xl w-full text-center border border-black p-2 my-2 relative"
+                  onClick={signUpWithGoogle}>
             <FcGoogle className="absolute text-xl" />
             Google
           </button>
