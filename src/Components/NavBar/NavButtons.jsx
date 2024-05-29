@@ -4,19 +4,32 @@ import { CgProfile } from "react-icons/cg";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import { FaGift, FaRegHeart } from "react-icons/fa"; // Corrected import
 import Authentication from "../Authentication/Authentication";
+// import CartComponent from "../Cart/CartComponent";
+import { Link } from "react-router-dom";
 
 const NavButtons = () => {
   const [showAuth, setShowAuth] = useState(false);
+  // const [showCart, setShowCart] = useState(false);
   const [show, setShow] = useState(false);
 
   return (
-    <div className="flex gap-8 text-[#ffffff] h-full relative">
+    <div className="flex gap-8 text-[#ffffff] h-full relative items-center">
       {showAuth && <Authentication setShowAuth={setShowAuth} />}
-      
+      {/* {showCart && <CartComponent setShowCart={setShowCart} />} */}
+
       {/* Cart */}
-      <button className="flex justify-center items-center gap-2 font-semibold hover:bg-gray-100 hover:text-black p-2 px-4 rounded-xl">
+      {/* <button
+        className="flex justify-center items-center gap-2 font-semibold hover:bg-gray-100 hover:text-black p-2 px-4 rounded-xl"
+        onClick={() => setShowCart(true)}
+      >
         Cart <AiOutlineShoppingCart className="text-lg hover:text-black" />
-      </button>
+      </button> */}
+
+      <Link to={"/cart"}>
+        <button className="flex justify-center items-center gap-2 font-semibold hover:bg-gray-100 hover:text-black p-2 px-4 rounded-xl">
+          Cart <AiOutlineShoppingCart className="text-lg hover:text-black" />
+        </button>
+      </Link>
 
       {/* Authentication */}
       <button
@@ -31,14 +44,19 @@ const NavButtons = () => {
             <div className="w-[80%] m-auto text-justify h-[50%] flex items-center">
               <div>
                 <ul className="flex gap-4 text-sm items-center my-3 text-gray-300">
-                  <RiAccountPinCircleLine />Your Account
+                  <RiAccountPinCircleLine />
+                  Your Account
                 </ul>
                 <ul className="flex gap-4 text-sm items-center my-3 text-gray-300">
-                  <FaGift />Your Orders
+                  <FaGift />
+                  Your Orders
                 </ul>
-                <ul className="flex gap-4 text-sm items-center my-3 text-gray-300">
-                  <FaRegHeart />Shortlists
-                </ul>
+                <Link to={"/mywhishlist"}>
+                  <ul className="flex gap-4 text-sm items-center my-3 text-gray-300">
+                    <FaRegHeart />
+                    Shortlists
+                  </ul>
+                </Link>
               </div>
             </div>
             <hr className="w-[90%] m-auto" />

@@ -4,6 +4,8 @@ import Home from "./Pages/Home";
 import Authentication from "./Pages/Authentication";
 import Products from "./Pages/Products";
 import { useSelector } from 'react-redux';
+import Cart from "./Pages/Cart";
+import ShortLists from "./Pages/ShortLists";
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           <Route path="/products" element={<Products />} />
         </Route>
         <Route path="/auth" element={<Authentication />} />
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/mywhishlist" element={<ShortLists/>}/>
       </Routes>
     </BrowserRouter>
   );

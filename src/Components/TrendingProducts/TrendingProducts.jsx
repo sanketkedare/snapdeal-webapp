@@ -17,7 +17,7 @@ const TrendingProducts = () => {
   return (
     <div className="h-[60vh] w-[90%] m-auto ">
       <h1 className="font-semibold my-10 p-50">TRENDING PRODUCTS</h1>
-      <div className="h-[80%] bg-white rounded-lg shadow-sm flex overflow-hidden">
+      <div className="h-[80%] bg-white rounded-lg shadow-sm flex gap-2 overflow-x-auto">
         {
           data && data.map((item)=><RecentProductCart key={item.id} item={item}/>)
         }

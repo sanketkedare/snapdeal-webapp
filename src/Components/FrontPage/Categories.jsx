@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const Categories = () => {
   return (
-    <div className="w-[15%] bg-[#ffff] p-3 shadow-lg relative h-[110vh] ">
-      <h1 className="text-sm">Top Categories</h1>
+    <div className="w-[15%] bg-[#ffff] p-3 shadow-xl relative h-[110vh] rounded-xl pt-5">
+      <h1 className="text-sm font-bold">Top Categories</h1>
       <div className="my-2 p-2">
         {data &&
           data.map((item) => (
