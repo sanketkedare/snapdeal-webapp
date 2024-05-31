@@ -9,7 +9,6 @@ const RecentProductCart = ({ item}) => {
   const [showHeart, setShowHeart] = useState(false);
   const [selected, setSelected] = useState(false);
 
-
   const selectedHandeler = () => {
     if (selected) {
       setSelected(false);
@@ -45,7 +44,7 @@ const RecentProductCart = ({ item}) => {
       </div>
       <Rating rating={item.rating.rate} />
       <h1 className="w-32 m-auto border rounded-xl text-center p-2 my-2 bg-sky-300">
-        Rs. {item.price}
+        Rs. {item.price *100}
       </h1>
     </div>
   );

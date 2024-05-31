@@ -1,22 +1,39 @@
 import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
-import { logInWithEmailAndPassword, signUpwithEmailPassWord, signUpWithGoogle } from "./firebaseAuth";
+import {
+  logInWithEmailAndPassword,
+  signUpwithEmailPassWord,
+  signUpWithGoogle,
+} from "./firebaseAuth";
 
 const AuthCard = ({ setShowAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const signUpHandeler = async () => {
-    const res = await signUpwithEmailPassWord(email, password);
-    console.log("response",res);
-    setShowAuth(false)
+    try {
+      const res = await signUpwithEmailPassWord(email, password);
+      console.log("response", res);
+      setShowAuth(false);
+    } catch (err) 
+    {
+      console.log("error", err);
+
+    }
   };
 
-  const signInHandeler = async() => {
+  const signInHandeler = async () => 
+  {
+    try {
     const res = await logInWithEmailAndPassword(email, password);
-    console.log("response",res);
-    setShowAuth(false)
+    console.log("response", res);
+    setShowAuth(false);
+    } catch (error) {
+      console.log("error", error);
+      
+    }
+    
   };
 
   return (
@@ -71,8 +88,10 @@ const AuthCard = ({ setShowAuth }) => {
           <p className="text-sm text-gray-400 text-center my-4">
             or Login Using
           </p>
-          <button className="shadow-2xl w-full text-center border border-black p-2 my-2 relative"
-                  onClick={signUpWithGoogle}>
+          <button
+            className="shadow-2xl w-full text-center border border-black p-2 my-2 relative"
+            onClick={signUpWithGoogle}
+          >
             <FcGoogle className="absolute text-xl" />
             Google
           </button>

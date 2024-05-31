@@ -1,9 +1,10 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const Products = () => {
   return (
-    <div>
-      Products Page
+    <div className='w-[90%]'>
+      <Outlet/>
     </div>
   )
 }

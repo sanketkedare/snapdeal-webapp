@@ -7,7 +7,7 @@ const ShortedComponent = () =>
   console.log("Short Listed ",shortListedProducts)
 
   return (
-    <div>
+    <div className='mt-20 w-[90%] m-auto'>
       Shorted Component
     </div>
   )

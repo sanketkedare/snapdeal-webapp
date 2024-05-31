@@ -7,8 +7,12 @@ import Authentication from "../Authentication/Authentication";
 import { Link } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import app from "../../Utils/firebase";
+import { trimName } from "../../Utils/trimName";
+import { useDispatch } from "react-redux";
+import { login, logout } from "../../Redux/userSlice";
 
 const NavButtons = () => {
+  const dispatch = useDispatch()
   const [userLoggedIn, setUserLoggedIn] = useState(null);
   const [showAuth, setShowAuth] = useState(false);
   const [show, setShow] = useState(false);
@@ -19,11 +23,11 @@ const NavButtons = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        dispatch(login(user))
         setUserLoggedIn(user);
-        console.log("You are now logged in");
       } else {
+        dispatch(logout());
         setUserLoggedIn(null);
-        console.log("You are logged out");
       }
     });
   }, []);
@@ -40,14 +44,14 @@ const NavButtons = () => {
 
       {/* Authentication */}
       <button
-        className="flex justify-center items-center gap-2 font-semibold px-4 py-2 hover:bg-black h-full relative rounded-t-xl"
+        className="flex justify-center items-center gap-2 font-semibold px-4 py-2 hover:bg-black h-full relative rounded-t-xl capitalize"
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
       >
-        {userLoggedIn ? userLoggedIn.email : "Sign in"}
+        {userLoggedIn ? trimName(userLoggedIn.email): "Sign in"}
         <CgProfile className="text-[30px] bg-gray-500 p-1 rounded-full" />
         {show && (
-          <div className="z-50 absolute w-[200px] h-[300px] bg-black top-10 rounded-b-xl shadow-md right-0 text-white">
+          <div className="z-50 absolute w-[200px] bg-black top-10 rounded-b-xl shadow-md right-0 py-4 text-white">
             <div className="w-[80%] m-auto text-justify h-[50%] flex items-center">
               <div>
                 <ul className="flex gap-4 text-sm items-center my-3 text-gray-300">
@@ -68,7 +72,7 @@ const NavButtons = () => {
             </div>
             <hr className="w-[90%] m-auto" />
             {userLoggedIn ? (
-              <button className="p-2 w-full m-auto bg-red-700 text-white px-4 rounded-xl my-4" onClick={loggout}>
+              <button className="p-2 w-[80%] m-auto bg-red-700 text-white px-4 rounded-xl my-4" onClick={loggout}>
                 Log Out
               </button>
             ) : (

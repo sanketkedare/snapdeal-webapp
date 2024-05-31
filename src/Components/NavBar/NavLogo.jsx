@@ -5,7 +5,7 @@ const NavLogo = () => (
   <Link to="/">
     <img
       title="Snapdeal"
-      class="notIeLogoHeader aspectRatioEqual sdHomepage cur-pointer"
+      class="notIeLogoHeader aspectRatioEqual sdHomepage cur-pointer mr-6"
       height="28"
       width="132"
       alt="logo"
