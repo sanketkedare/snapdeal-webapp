@@ -44,11 +44,11 @@ const NavButtons = () => {
 
       {/* Authentication */}
       <button
-        className="flex justify-center items-center gap-2 font-semibold px-4 py-2 hover:bg-black h-full relative rounded-t-xl capitalize"
+        className="flex justify-center items-center gap-2 font-semibold px-2 py-2 hover:bg-black h-full relative rounded-t-xl capitalize text-sm lg:w-[200px] w-[100px]"
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
       >
-        {userLoggedIn ? trimName(userLoggedIn.email): "Sign in"}
+        <h1 className="text-sm w-4/5 overflow-hidden">{userLoggedIn ? trimName(userLoggedIn.email): "Sign in"}</h1>
         <CgProfile className="text-[30px] bg-gray-500 p-1 rounded-full" />
         {show && (
           <div className="z-50 absolute w-[200px] bg-black top-10 rounded-b-xl shadow-md right-0 py-4 text-white">

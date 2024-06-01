@@ -12,7 +12,7 @@ const FrontPage = () => {
   const { pathname } = useLocation();
   return (
     <>
-      <div className="w-[90%] m-auto flex gap-2 mt-20 rounded-sm shadow-sm">
+      <div className="lg:w-[90%] m-auto flex gap-2 mt-20 rounded-sm shadow-sm">
         <Categories />
         {pathname === "/" ? (
           <div className="bg-[#ffff] shadow-sm w-[85%] p-3 rounded-lg">

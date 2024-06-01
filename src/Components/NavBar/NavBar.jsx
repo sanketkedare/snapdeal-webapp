@@ -6,7 +6,7 @@ import SearchComponent from "./SearchComponent";
 
 const NavBar = () => {
   return (
-    <div className="bg-[#e40046] text-[#ffffff] top-0 py-3 fixed z-50 w-full">
+    <div className="bg-[#e40046] text-[#ffffff] top-0 py-3 fixed z-50 lg:w-full ">
       {/* <UpperNavBar /> */}
 
       {/* Main NavBar */}
