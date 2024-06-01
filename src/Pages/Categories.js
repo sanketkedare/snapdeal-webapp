@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ItemCard from "../Components/Categories/ItemCard";
+import { Outlet } from "react-router-dom";
 
 const Categories = () => {
   const [data, setData] = useState(null);
@@ -13,8 +14,9 @@ const Categories = () => {
       .catch((err) => console.log(err));
   }, [path]);
   return (
-    <div className="w-full h-full ">
+    <div className="w-full">
       {console.log(data)}
+      <Outlet/>
       <h1 className="my-2 font-bold p-3 text-sky-950">
         {path.toUpperCase()}
       </h1>

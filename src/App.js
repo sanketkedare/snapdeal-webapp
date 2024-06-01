@@ -6,6 +6,7 @@ import Products from "./Pages/Products";
 import Cart from "./Pages/Cart";
 import ShortLists from "./Pages/ShortLists";
 import Categories from "./Pages/Categories";
+import SingleProduct from "./Components/Product/SingleProduct";
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="/products" element={<Products />}>
-            <Route path="/products/:category" element={<Categories />} />
+            <Route path="/products/:category" element={<Categories />}>
+              <Route path="/products/:category/:id" element={<SingleProduct/>}/>
+            </Route>
           </Route>
         </Route>
         <Route path="/auth" element={<Authentication />} />
