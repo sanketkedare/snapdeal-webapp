@@ -5,9 +5,7 @@ const NavLogo = () => (
   <Link to="/">
     <img
       title="Snapdeal"
-      class="notIeLogoHeader aspectRatioEqual sdHomepage cur-pointer mr-6"
-      height="28"
-      width="132"
+      className="mr-6 w-[132px] h-[28px] px-1"
       alt="logo"
       src="https://i3.sdlcdn.com/img/snapdeal/darwin/logo/sdLatestLogo.svg"
     />

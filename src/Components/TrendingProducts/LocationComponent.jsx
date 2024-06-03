@@ -17,7 +17,7 @@ const LocationComponent = () => {
   const nextHandeler = () => setShowLocation(!showLocation);
 
   return (
-    <div className="p-2 w-1/4 border ml-2">
+    <div className="p-2 h-[350px] lg:w-1/4 border ml-2">
       {showLocation ? (
         <div className="bg-white w-[90%] h-full rounded-sm p-2 shadow-sm  flex-col m-auto justify-center">
           <img alt="location" src="/Location.png" className="m-auto" />

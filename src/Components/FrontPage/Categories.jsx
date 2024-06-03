@@ -11,15 +11,15 @@ const Categories = () => {
 
  
   return (
-    <div className="w-[15%] bg-[#ffff] p-3 shadow-xl relative h-[110vh] rounded-xl pt-5">
+    <div className="lg:w-[15%] bg-[#ffff] p-3 shadow-xl relative lg:h-[110vh] rounded-xl pt-5">
       <h1 className="text-sm font-bold">Top Categories</h1>
-      <div className="my-2 p-2">
+      <div className="my-2 p-2 lg:grid flex items-center justify-between overflow-x-auto">
         {data &&
           data.map((item) => (
             <Link
               to={`/products/${item.path}`}
               key={item.name}
-              className={`py-3 capitalize text-sm flex gap-2 items-center my-2 rounded-xl hover:bg-gray-200 p-1 ${
+              className={`lg:py-3 lg:w-auto w-6 capitalize text-sm flex gap-2 items-center lg:my-2 rounded-xl hover:bg-gray-200 p-1 ${
                 item.path === trimPath(pathname) && "bg-green-300"
               } `}
               onClick={()=>dispatch(setPath(item.name.toLowerCase()))}
@@ -29,7 +29,7 @@ const Categories = () => {
             </Link>
           ))}
       </div>
-      <div className="absolute bottom-1 left-0 w-full h-[100px] flex justify-center items-center px-2 m-auto">
+      <div className="lg:absolute bottom-1 left-0 w-full lg:h-[100px] flex justify-center items-center px-2 m-auto">
         <img
           alt="QR"
           src="https://i2.sdlcdn.com/img/snapdeal/barCode_Home1x.png"

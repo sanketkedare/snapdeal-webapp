@@ -6,12 +6,12 @@ import SearchComponent from "./SearchComponent";
 
 const NavBar = () => {
   return (
-    <div className="bg-[#e40046] text-[#ffffff] top-0 py-3 fixed z-50 lg:w-full ">
+    <div className="bg-[#e40046] text-[#ffffff] top-0 py-3 fixed z-50 w-full ">
       {/* <UpperNavBar /> */}
 
       {/* Main NavBar */}
-      <div className=" sticky">
-        <div className="flex justify-between items-center w-[90%] m-auto">
+      <div className="">
+        <div className="flex justify-between items-center lg:w-[90%] m-auto">
           {/* WebSite Logo */}
           <NavLogo />
 

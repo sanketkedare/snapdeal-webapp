@@ -7,7 +7,7 @@ const Features = () =>
     
 
   return (
-    <div className='m-16 border-t flex h-[300px] bg-white p-3 justify-around'>
+    <div className='lg:m-16 lg:my-0 my-5 border-t flex lg:h-[300px] bg-white p-3 justify-around'>
       {featureList.map((feature) =><FeatureCart key={feature.id} feature={feature}/>)}
     </div>
   )

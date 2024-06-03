@@ -5,7 +5,6 @@
 
 ## Table of Contents
 - [Installation](#installation)
-- [Usage](#usage)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
@@ -37,7 +36,50 @@
    yarn install
    ```
 
-## Usage
+## Features
+
+### Frontend Interface Development
+- Create a visually appealing frontend interface inspired by Snapdeal.
+- Incorporate modern design principles and elements for a fresh and engaging look.
+
+### User Authentication and Cart Management
+- Integrate features for user login, signup, and cart management.
+- Ensure smooth interaction and data handling based on the provided API documentation.
+
+### Browse Products Without Login/Signup
+- Allow users to browse products without needing to login or signup.
+- Enhance accessibility and improve the overall user experience.
+
+### Data Management with Redux Toolkit or Thunk or Saga
+- Implement robust data management using Redux Toolkit, Thunk, or Saga.
+- Ensure efficient state management and data flow throughout the application.
+
+### Authentication Redirect
+- Redirect users to the login/signup page when attempting to add an item to the cart or proceed to buy now, if they are not logged in.
+- Ensure security and proper user authentication.
+
+### Authentication Methods
+- Utilize Firebase, JWT, or OAuth for user authentication.
+- Implement secure and reliable authentication methods based on the provided API documentation.
+
+### UI/UX Design
+- Utilize libraries like Tailwind, Bootstrap, Material UI, or any preferred library for UI/UX design.
+- Ensure a visually appealing and intuitive frontend for seamless navigation and interaction.
+
+### Search Functionality
+- Implement search functionality to enable users to easily search for products.
+- Enhance user convenience and product discovery.
+
+### Thorough Testing
+- Conduct thorough testing to ensure all functionalities work as expected.
+- Provide a seamless and bug-free user experience.
+
+### Documentation and Deployment
+- Document the development process, challenges faced, and solutions implemented.
+- Provide clear instructions for deploying and accessing the application.
+- Ensure ease of use for developers and users alike.
+
+
 
 ### Running the Project
 To start the development server, run:

@@ -33,12 +33,12 @@ const NavButtons = () => {
   }, []);
 
   return (
-    <div className="flex gap-8 text-[#ffffff] h-full relative items-center">
+    <div className="flex lg:gap-8 text-[#ffffff] h-full relative items-center">
       {showAuth && <Authentication setShowAuth={setShowAuth} />}
 
       <Link to={"/cart"}>
-        <button className="flex justify-center items-center gap-2 font-semibold hover:bg-gray-100 hover:text-black p-2 px-4 rounded-xl">
-          Cart <AiOutlineShoppingCart className="text-lg hover:text-black" />
+        <button className="text-sm flex justify-center items-center gap-2 font-semibold hover:bg-gray-100 hover:text-black p-2 px-4 rounded-xl">
+          Cart <AiOutlineShoppingCart className="lg:text-lg hover:text-black" />
         </button>
       </Link>
 
@@ -48,8 +48,8 @@ const NavButtons = () => {
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
       >
-        <h1 className="text-sm w-4/5 overflow-hidden">{userLoggedIn ? trimName(userLoggedIn.email): "Sign in"}</h1>
-        <CgProfile className="text-[30px] bg-gray-500 p-1 rounded-full" />
+        <h1 className="text-sm  overflow-hidden">{userLoggedIn ? trimName(userLoggedIn.email): "Sign in"}</h1>
+        <CgProfile className="text-lg lg:text-[30px] bg-gray-500 p-1 rounded-full" />
         {show && (
           <div className="z-50 absolute w-[200px] bg-black top-10 rounded-b-xl shadow-md right-0 py-4 text-white">
             <div className="w-[80%] m-auto text-justify h-[50%] flex items-center">
