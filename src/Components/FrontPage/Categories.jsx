@@ -4,6 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 import { setPath } from "../../Redux/categorySlice";
 import { useDispatch } from "react-redux";
 
+/**
+ * 
+ * Categories Component
+ * Contains multiple Categories
+ * QR Code Component to download Mobile application
+ */
 const Categories = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch() 
@@ -13,19 +19,19 @@ const Categories = () => {
   return (
     <div className="lg:w-[15%] bg-[#ffff] p-3 shadow-xl relative lg:h-[110vh] rounded-xl pt-5">
       <h1 className="text-sm font-bold">Top Categories</h1>
-      <div className="my-2 p-2 lg:grid flex items-center justify-between overflow-x-auto">
+      <div className="my-2 p-2 lg:grid flex lg:items-center gap-2 justify-between overflow-x-auto">
         {data &&
           data.map((item) => (
             <Link
               to={`/products/${item.path}`}
               key={item.name}
-              className={`lg:py-3 lg:w-auto w-6 capitalize text-sm flex gap-2 items-center lg:my-2 rounded-xl hover:bg-gray-200 p-1 ${
+              className={` lg:py-3 shadow-md lg:w-auto w-[100px] capitalize text-sm lg:flex gap-2  items-center lg:my-2 rounded-xl hover:bg-gray-200 p-1 ${
                 item.path === trimPath(pathname) && "bg-green-300"
               } `}
               onClick={()=>dispatch(setPath(item.name.toLowerCase()))}
             >
-              <img src={item.img} className="w-5 rounded-full" />
-              <h1>{item.name}</h1>
+              <div className="w-[50px] h-[50px] overflow-hidden rounded-full"><img src={item.img}  /></div>
+              <h1 className="text-wrap lg:my-0 my-2">{item.name}</h1>
             </Link>
           ))}
       </div>

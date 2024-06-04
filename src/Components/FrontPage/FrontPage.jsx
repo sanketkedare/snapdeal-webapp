@@ -1,3 +1,11 @@
+/**
+ * Front Page Component
+ * Contains Multiple range of a Components
+ * Categories - Section have multiple options for each category
+ * Home Section of a web page at path '/' 
+ * and changes components dynamically according to path from category
+ */
+
 import React from "react";
 import Categories from "./Categories";
 import TrendingProducts from "../TrendingProducts/TrendingProducts";

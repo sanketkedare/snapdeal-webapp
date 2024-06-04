@@ -1,3 +1,10 @@
+/***
+ * Snapdeal Webapp routes 
+ * All routes have saperate pages from Pages folder
+ * Pages and Components have js and jsx extensions respectively
+ */
+
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home";

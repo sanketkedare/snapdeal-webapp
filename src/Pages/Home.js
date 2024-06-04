@@ -1,3 +1,9 @@
+/**
+ * Home Page
+ * Contains the Navbar, Front Page and Footer Component.
+ * All components are created in Saperate folder in Components directory.
+ */
+
 import React from 'react'
 import NavBar from '../Components/NavBar/NavBar'
 import Footer from '../Components/Footer/Footer'
