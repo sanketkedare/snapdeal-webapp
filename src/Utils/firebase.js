@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBLkrxMhTBFuL3-TjFy5pVIGVMNr9SuqfY",
+  apiKey: process.env.REACT_APP_APIKEY,
   authDomain: "snapdeal-webapp.firebaseapp.com",
   projectId: "snapdeal-webapp",
   storageBucket: "snapdeal-webapp.appspot.com",

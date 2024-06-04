@@ -21,7 +21,7 @@ const RecentProducts = () => {
   return (
     <div className="">
       <h1 className="font-semibold my-5 uppercase text-sm">Recently Viewed PRODUCTS</h1>
-      <div className="relative w-full h-3/4 flex gap-3 mb-2 overflow-x-auto">
+      <div className="relative w-full h-3/4 flex gap-3 mb-2 overflow-x-auto  py-4 p-2">
         {data &&
           data.map((item) => <RecentProductCart key={item.id} item={item} />)}
       </div>

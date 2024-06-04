@@ -1,6 +1,8 @@
 import React from "react";
 import Download from "./Download";
 
+// Adervertiesment Component
+
 const Advertisement = () => {
   return (
     <div className="lg:h-[80vh] w-[90%] m-auto bg-white mt-10 lg:flex relative">

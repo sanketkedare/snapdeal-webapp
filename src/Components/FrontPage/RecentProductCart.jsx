@@ -6,11 +6,17 @@ import { addToShort } from "../../Redux/shortListSlice";
 import { Link } from "react-router-dom";
 import { setCurrentProduct } from "../../Redux/currentProductSlice";
 
+
+// Recent Products Cart
+// Used to render components by reducing code via map function of JS
+// Component Receives data from prop item as object
+
 const RecentProductCart = ({ item}) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();                    // used to dispatch data to Redux
   const [showHeart, setShowHeart] = useState(false);
   const [selected, setSelected] = useState(false);
 
+  // selectHander is used to short product in myWhishList / fev List 
   const selectedHandeler = (e) => {
     e.preventDefault(); 
     if (selected) {
@@ -37,7 +43,7 @@ const addToCurrentProduct = () => dispatch(setCurrentProduct(item));
       {showHeart &&
         (selected ? (
           <FaHeart
-            className="absolute right-3 top-3 font-thin text-red-500"
+            className="absolute right-3 top-3 z-10 font-thin text-red-500"
             onClick={(e)=>selectedHandeler(e)}
           />
         ) : (

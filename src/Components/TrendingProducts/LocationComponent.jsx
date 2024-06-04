@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import SignInAdd from "./SignInAdd";
 import ShortListSummary from "./ShortListSummary";
 
+// Location Component 
+
 const LocationComponent = () => {
   const isLoggedin = useSelector((state) => state.user.isAuthenticated);
 

@@ -56,11 +56,11 @@ const OptionsSlider = () => {
           />
         </div>
       </div>
-      <div className="absolute lg:bottom-10 -bottom-16 lg:my-0 my-3 lg:h-[70px] border w-full z-10 bg-white flex gap-2 justify-between px-1 overflow-x-auto">
+      <div className="absolute lg:bottom-10 -bottom-16 lg:my-0 my-3 py-2 lg:h-[70px] border w-full z-10 bg-white flex gap-2 justify-between px-1 overflow-x-auto">
         {opetionsArray.map((i) => (
           <button
             onClick={() => handleButtonClick(i.id)}
-            className={`p-1 text-[8px] lg:text-sm px-2 ${counter === i.id ? "bg-gray-200" : ""}`}
+            className={`p-1 text-nowrap shadow-sm uppercase w-[150px] text-[10px] lg:text-sm px-2 ${counter === i.id ? "bg-gray-200" : ""}`}
             key={i.id}
           >
             {i.des}
