@@ -4,7 +4,7 @@ import { policies } from "../../Utils/policies";
 
 const AuthPolicies = () => {
   return (
-    <div className="w-[900px] h-[400px] absolute -bottom-40 -right-96 bg-gray-200  rounded-xl p-4 z-20 flex items-center px-4">
+    <div className="w-[900px] h-[400px] absolute -bottom-40 hidden -right-96 bg-gray-200  rounded-xl p-4 z-20 lg:flex items-center px-4">
           <div className="ml-5">
             {policies.map((policy) => (
               <div key={policy.des} className="flex gap-4 my-10 items-center">

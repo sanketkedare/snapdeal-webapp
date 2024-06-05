@@ -24,8 +24,8 @@ const SingleProduct = () => {
   };
 
   return (
-    <div className="w-[90%] m-auto bg-white p-9 flex gap-2  justify-between overflow-y-scroll hover:shadow-2xl rounded-xl ">
-      <div className="w-1/2 p-14 rounded-2xl shadow-lg overflow-hidden relative flex justify-center items-center hover:shadow-2xl">
+    <div className="lg:w-[90%]  m-auto bg-white my-3 p-9 lg:flex gap-2  justify-between overflow-y-scroll hover:shadow-2xl rounded-xl ">
+      <div className="lg:w-1/2 lg:p-14 p-2 rounded-2xl shadow-lg overflow-hidden relative flex justify-center items-center hover:shadow-2xl">
         <img
           alt={product.title}
           src={product.image}
@@ -35,16 +35,16 @@ const SingleProduct = () => {
         
         
       </div>
-      <div className="w-1/2">
+      <div className="lg:w-1/2">
         <h1 className="text-[30px] font-bold my-4 text-center">
           {product.title}
         </h1>
-        <p className="my-5 text-xl text-gray-600 ">{product.description}</p>
+        <p className="my-5 lg:text-xl text-gray-600 ">{product.description}</p>
         <div className="border p-4 flex justify-center items-center gap-5">
           <Rating rating={product.rating.rate} />
           <p>({product.rating.count})</p>
         </div>
-        <p className="text-sky-600">Category : {product.category}</p>
+        <p className="text-sky-600 mt-3">Category : {product.category}</p>
         <button className="font-semibold border rounded-xl p-3 px-10 my-5 bg-gray-800 text-white">
           ₹ {product.price * 100}
         </button>

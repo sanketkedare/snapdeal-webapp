@@ -37,7 +37,7 @@ const AuthCard = ({ setShowAuth }) => {
   };
 
   return (
-    <div className=" bg-white border  absolute rounded-xl shadow-md z-30 w-[400px] h-[500px]  -bottom-56 -right-72 px-8 flex justify-center items-center">
+    <div className=" bg-white border  absolute rounded-xl shadow-md z-30 lg:w-[400px] w-[350px] h-[500px] -bottom-56 -right-44 lg:-right-72 px-8 flex justify-center items-center">
       <div>
         <IoCloseSharp
           className="absolute right-2 top-2 bg-white p-1 text-[30px] rounded-full shadow-lg"

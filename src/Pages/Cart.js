@@ -10,7 +10,6 @@ const Cart = () => {
       <NavBar />
       <CartComponent />
       <TrendingProducts/>
-
       <Footer />
     </div>
   );

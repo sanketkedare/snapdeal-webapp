@@ -12,7 +12,7 @@ import FrontPage from '../Components/FrontPage/FrontPage'
 const Home = () => 
 {
   return (
-    <div className='bg-[#f0eeee] w-screen overflow-hidden'>
+    <div className='bg-[#f0eeee]  overflow-hidden '>
       <NavBar/>
       <FrontPage/>
       <Footer />

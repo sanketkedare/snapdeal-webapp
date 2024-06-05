@@ -18,7 +18,7 @@ import SingleProduct from "./Components/Product/SingleProduct";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes >
         <Route path="/" element={<Home />}>
           <Route path="/products" element={<Products />}>
             <Route path="/products/:category" element={<Categories />}>

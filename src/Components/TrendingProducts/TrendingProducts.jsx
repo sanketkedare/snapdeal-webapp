@@ -23,7 +23,7 @@ const TrendingProducts = () => {
   return (
     <div className="h-[60vh] lg:w-[90%] m-auto ">
       <h1 className="font-semibold my-10 p-50 text-sm pl-4">TRENDING PRODUCTS</h1>
-      <div className="h-[80%] p-4 py-5 bg-white rounded-lg shadow-sm flex gap-2 overflow-x-auto">
+      <div className="no-scrollbar h-[80%] p-4 py-5 bg-white rounded-lg shadow-sm flex gap-2 overflow-x-auto ">
         {
           data && data.map((item)=><RecentProductCart key={item.id} item={item}/>)
         }

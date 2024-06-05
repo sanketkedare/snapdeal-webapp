@@ -56,7 +56,7 @@ const OptionsSlider = () => {
           />
         </div>
       </div>
-      <div className="absolute lg:bottom-10 -bottom-16 lg:my-0 my-3 py-2 lg:h-[70px] border w-full z-10 bg-white flex gap-2 justify-between px-1 overflow-x-auto">
+      <div className="no-scrollbar absolute lg:bottom-10 -bottom-16 lg:my-0 my-3 py-2 lg:h-[70px] border w-full z-10 bg-white flex gap-2 justify-between px-1 overflow-x-auto">
         {opetionsArray.map((i) => (
           <button
             onClick={() => handleButtonClick(i.id)}
