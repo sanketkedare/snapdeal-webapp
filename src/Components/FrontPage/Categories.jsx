@@ -30,7 +30,7 @@ const Categories = () => {
               } `}
               onClick={()=>dispatch(setPath(item.name.toLowerCase()))}
             >
-              <div className="w-[50px] h-[50px] overflow-hidden rounded-full"><img src={item.img}  /></div>
+              <div className="w-[50px] h-[50px] overflow-hidden rounded-full"><img alt={item.title} src={item.img}  /></div>
               <h1 className="text-wrap lg:my-0 my-2">{item.name}</h1>
             </Link>
           ))}

@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useEffect } from "react";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import { FaGift, FaRegHeart } from "react-icons/fa";

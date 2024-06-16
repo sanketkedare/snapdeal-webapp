@@ -1,5 +1,9 @@
+/*eslint-disable*/
+
 import React, { useEffect, useState } from "react";
 import RecentProductCart from "../FrontPage/RecentProductCart";
+import { useDispatch} from "react-redux";
+import { setProducts } from "../../Redux/productSlice";
 
 /***
  * Trending Products Component
@@ -7,15 +11,18 @@ import RecentProductCart from "../FrontPage/RecentProductCart";
  */
 
 const TrendingProducts = () => {
+
   const [data, setData] = useState(null);
+  const dispatch = useDispatch();
 
   const getRecentProducts = async () => {
-    const response = await fetch(`https://fakestoreapi.com/products?sort=desc`);
+    const response = await fetch(process.env.REACT_APP_PRODUCT_API);
     const JSON = await response.json();
+    console.log(JSON);
+    dispatch(setProducts(JSON))
     setData(JSON);
   };
 
-  // useEffect() Hook used to fetch data only once, using empty dependency array
   useEffect(() => {
     getRecentProducts();
   }, []);
@@ -23,7 +30,7 @@ const TrendingProducts = () => {
   return (
     <div className="h-[60vh] lg:w-[90%] m-auto ">
       <h1 className="font-semibold my-10 p-50 text-sm pl-4">TRENDING PRODUCTS</h1>
-      <div className="no-scrollbar h-[80%] p-4 py-5 bg-white rounded-lg shadow-sm flex gap-2 overflow-x-auto ">
+      <div className="no-scrollbar h-[80%] p-4 py-5 bg-white rounded-lg shadow-sm flex flex-row-reverse gap-2 overflow-x-auto ">
         {
           data && data.map((item)=><RecentProductCart key={item.id} item={item}/>)
         }

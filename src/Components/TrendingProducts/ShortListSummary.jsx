@@ -10,7 +10,7 @@ const ShortListSummary = ({nextHandeler}) => {
             ShortListed Items
           {data.map((item) => (
             <div className="my-1 text-sm px-2 flex items-center border rounded-xl gap-3 h-10 overflow-hidden shadow-xl">
-                <img src={item.image} className="w-1/12"/>
+                <img alt={item.title} src={item.image} className="w-1/12"/>
                 <h1 className="w-11/12 text-nowrap">{item.title}</h1>
             </div>
           ))}

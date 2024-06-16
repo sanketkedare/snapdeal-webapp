@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import SignInAdd from "./SignInAdd";
 import ShortListSummary from "./ShortListSummary";
 
-// Location Component 
+// Location Component
 
 const LocationComponent = () => {
   const isLoggedin = useSelector((state) => state.user.isAuthenticated);
@@ -12,11 +12,22 @@ const LocationComponent = () => {
   const [pincode, setPincode] = useState("");
   const [value, setValue] = useState(null);
 
-  const serchLocation = () => {
-    value === null ? setValue(`Pincode : ${pincode}`) : setValue(null);
+
+  const serchLocation = () => 
+  {
+    if (value === null) 
+    {
+      setValue(`Pincode : ${pincode}`);
+    } 
+
+    else 
+    {
+      setValue(null);
+    }
   };
 
   const nextHandeler = () => setShowLocation(!showLocation);
+
 
   return (
     <div className="p-2 h-[350px] lg:w-1/4 border ml-2">

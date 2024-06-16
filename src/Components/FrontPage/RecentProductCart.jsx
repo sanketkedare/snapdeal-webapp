@@ -52,7 +52,7 @@ const addToCurrentProduct = () => dispatch(setCurrentProduct(item));
             onClick={(e)=>selectedHandeler(e)}
           />
         ))}
-      <img src={item.image} className="h-32 m-auto" />
+      <img alt={item.title} src={item.image} className="h-32 m-auto" />
       <div className="h-[40px] my-3 overflow-hidden">
         <p className="text-[12px] text-center">{item.title}</p>
       </div>

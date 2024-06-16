@@ -6,15 +6,23 @@ import {
   signUpwithEmailPassWord,
   signUpWithGoogle,
 } from "./firebaseAuth";
+import { register } from "../../Utils/register";
 
 const AuthCard = ({ setShowAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+  const login = async() => {
+
+  }
+
   const signUpHandeler = async () => {
     try {
       const res = await signUpwithEmailPassWord(email, password);
       console.log("response", res);
+      const t = await register(email, password);
+      console.log("t",t)
       setShowAuth(false);
     } catch (err) 
     {

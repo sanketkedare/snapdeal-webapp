@@ -9,7 +9,7 @@ const AuthPolicies = () => {
             {policies.map((policy) => (
               <div key={policy.des} className="flex gap-4 my-10 items-center">
                 <div className="w-[50px] rounded-full overflow-hidden shadow-lg">
-                  <img src={policy.img} className="m-auto" />
+                  <img alt={policy.img} src={policy.img} className="m-auto" />
                 </div>
                 <div>
                   <h1 className="font-semibold uppercase"> {policy.title}</h1>

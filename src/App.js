@@ -1,9 +1,8 @@
 /***
- * Snapdeal Webapp routes 
+ * Snapdeal Webapp routes
  * All routes have saperate pages from Pages folder
  * Pages and Components have js and jsx extensions respectively
  */
-
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
@@ -17,11 +16,14 @@ import SingleProduct from "./Components/Product/SingleProduct";
 function App() {
   return (
     <BrowserRouter>
-      <Routes >
+      <Routes>
         <Route path="/" element={<Home />}>
           <Route path="/products" element={<Products />}>
             <Route path="/products/:category" element={<Categories />}>
-              <Route path="/products/:category/:id" element={<SingleProduct/>}/>
+              <Route
+                path="/products/:category/:id"
+                element={<SingleProduct />}
+              />
             </Route>
           </Route>
         </Route>

@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useEffect, useState } from "react";
 import { IoIosCart } from "react-icons/io";
 import Rating from "../FrontPage/RatingComponent";
@@ -7,6 +9,7 @@ import { addToShort } from "../../Redux/shortListSlice";
 import { addToCart, removeFromCart } from "../../Redux/cartSlice";
 import { Link } from "react-router-dom";
 import { setCurrentProduct } from "../../Redux/currentProductSlice";
+import axios from 'axios'
 
 /**
  * Item Component
@@ -17,9 +20,24 @@ const ItemCard = ({ item }) => {
   // Used to update states in redux
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
+  const {email} = useSelector((state) => state.user);
   const [showHeart, setShowHeart] = useState(false);
   const [selected, setSelected] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
+
+
+  const addToCartDB = async (userEmail, item) => {
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_CART}/add`, {
+        userEmail,
+        item
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      throw error;
+    }
+  };
 
   // handeler for shorting the fev products
   const selectedHandeler = (e) => {
@@ -33,11 +51,13 @@ const ItemCard = ({ item }) => {
   };
 
   // Cart handeler for adding or removing item from cart
-  const cartHandeler = (e) => {
+  const cartHandeler = async (e) => {
 
     e.preventDefault(); // Used to prevent DOM actions
     if (addedToCart === false) {
       dispatch(addToCart(item));
+      const res = await addToCartDB(email, item);
+      console.log(res)
       setAddedToCart(true);
     } else {
       dispatch(removeFromCart(item));
