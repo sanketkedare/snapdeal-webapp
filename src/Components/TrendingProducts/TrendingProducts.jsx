@@ -18,7 +18,6 @@ const TrendingProducts = () => {
   const getRecentProducts = async () => {
     const response = await fetch(process.env.REACT_APP_PRODUCT_API);
     const JSON = await response.json();
-    console.log(JSON);
     dispatch(setProducts(JSON))
     setData(JSON);
   };

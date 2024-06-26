@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+/*eslint-disable*/
+
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import SignInAdd from "./SignInAdd";
 import ShortListSummary from "./ShortListSummary";
@@ -12,22 +14,23 @@ const LocationComponent = () => {
   const [pincode, setPincode] = useState("");
   const [value, setValue] = useState(null);
 
+  const locationTracker = async () => {
+    const API = process.env.REACT_APP_LOCATION + `/${pincode}`;
+    const res = await fetch(API);
+    const JSON = await res.json();
+    return JSON;
+  };
 
-  const serchLocation = () => 
-  {
-    if (value === null) 
-    {
-      setValue(`Pincode : ${pincode}`);
-    } 
-
-    else 
-    {
+  const serchLocation = async () => {
+    if (value === null) {
+      const data = await locationTracker();
+      setValue(data[0].taluk);
+    } else {
       setValue(null);
     }
   };
 
   const nextHandeler = () => setShowLocation(!showLocation);
-
 
   return (
     <div className="p-2 h-[350px] lg:w-1/4 border ml-2">
@@ -53,7 +56,7 @@ const LocationComponent = () => {
               className="m-auto w-[100%] my-2  p-2 border text-sm"
               onClick={() => setValue(null)}
             >
-              Pincode : {pincode}
+              Location : {value}
             </div>
           )}
           <div className="flex gap-2 w-full  bottom-1 left-0">
