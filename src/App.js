@@ -12,11 +12,13 @@ import Cart from "./Pages/Cart";
 import ShortLists from "./Pages/ShortLists";
 import Categories from "./Pages/Categories";
 import SingleProduct from "./Components/Product/SingleProduct";
+import Login from "./Pages/Login";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />}>
           <Route path="/products" element={<Products />}>
             <Route path="/products/:category" element={<Categories />}>
