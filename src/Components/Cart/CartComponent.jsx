@@ -6,6 +6,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 const CartComponent = () => {
   const data = useSelector((state) => state.cart);
 
+
   return (
     <div className="w-[90%] mt-24  m-auto">
       <button className="font-bold lg:text-xl my-5 flex items-center gap-2 border shadow-lg rounded-xl  p-3 px-5 hover:bg-black hover:text-white">
