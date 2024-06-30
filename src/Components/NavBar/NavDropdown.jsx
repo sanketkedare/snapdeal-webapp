@@ -6,10 +6,11 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import app from "../../Utils/firebase";
 import { Link } from "react-router-dom";
 import { login, logout } from "../../Redux/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavDropdown = ({ setShowAuth, userLoggedIn, setUserLoggedIn }) => {
   const dispatch = useDispatch();
+  const Authenticated = useSelector((state) => state.user.isAuthenticated);
 
   const auth = getAuth(app);
   const loggout = () => signOut(auth);
@@ -19,7 +20,7 @@ const NavDropdown = ({ setShowAuth, userLoggedIn, setUserLoggedIn }) => {
       if (user) {
         dispatch(login(user));
         setUserLoggedIn(user);
-        setShowAuth(false)
+        setShowAuth(false);
       } else {
         dispatch(logout());
         setUserLoggedIn(null);
@@ -39,7 +40,7 @@ const NavDropdown = ({ setShowAuth, userLoggedIn, setUserLoggedIn }) => {
             <FaGift />
             Your Orders
           </ul>
-          <Link to={"/mywhishlist"}>
+          <Link to={Authenticated ? "/mywhishlist" : "/login"}>
             <ul className="flex gap-4 text-sm items-center my-3 text-gray-300">
               <FaRegHeart />
               Shortlists

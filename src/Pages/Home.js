@@ -38,7 +38,7 @@ const Home = () => {
       const jsonResponse_short = await shortResponse.json();
       updateStore(jsonResponse_cart, jsonResponse_short);
     } else {
-      console.error("Failed to fetch cart/short from DB:", response.statusText);
+      console.error("Failed to fetch cart/short from DB:");
     }
   };
 

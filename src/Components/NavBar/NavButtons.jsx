@@ -10,19 +10,19 @@ import { Link } from "react-router-dom";
 import { trimName } from "../../Utils/trimName";
 
 import NavDropdown from "./NavDropdown";
+import { useSelector } from "react-redux";
 
 const NavButtons = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(null);
   const [showAuth, setShowAuth] = useState(false);
   const [show, setShow] = useState(false);
-
-
+  const Authenticated = useSelector((state)=>state.user.isAuthenticated)
 
   return (
     <div className="lg:flex lg:gap-8 text-[#ffffff] h-full relative items-center">
       {showAuth && <Authentication setShowAuth={setShowAuth} />}
 
-      <Link to={"/cart"}>
+      <Link to={Authenticated ? "/cart" : "/login"}>
         <button className="text-[10px] m-auto lg:text-sm flex justify-center items-center gap-2 font-semibold lg:bg-inherit bg-white lg:text-white text-black  hover:bg-gray-100 hover:text-black py-1 lg:p-2 lg:px-4 px-2 rounded-xl">
           Cart <AiOutlineShoppingCart className="text-[10px] lg:text-lg hover:text-black" />
         </button>

@@ -1,7 +1,7 @@
 import React, {  useState } from "react";
 import Rating from "./RatingComponent";
 import { FaRegHeart, FaHeart } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToShort } from "../../Redux/shortListSlice";
 import { Link } from "react-router-dom";
 import { setCurrentProduct } from "../../Redux/currentProductSlice";
@@ -15,6 +15,8 @@ const RecentProductCart = ({ item}) => {
   const dispatch = useDispatch();                    // used to dispatch data to Redux
   const [showHeart, setShowHeart] = useState(false);
   const [selected, setSelected] = useState(false);
+  const Authenticated = useSelector((state) => state.user.isAuthenticated);
+
 
   // selectHander is used to short product in myWhishList / fev List 
   const selectedHandeler = (e) => {
@@ -40,7 +42,7 @@ const addToCurrentProduct = () => dispatch(setCurrentProduct(item));
       onClick={addToCurrentProduct}
     >
 
-      {showHeart &&
+      {Authenticated && showHeart &&
         (selected ? (
           <FaHeart
             className="absolute right-3 top-3 z-10 font-thin text-red-500"

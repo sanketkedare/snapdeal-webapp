@@ -13,10 +13,6 @@ const AuthCard = ({ setShowAuth }) => {
   const [password, setPassword] = useState("");
 
 
-  const login = async() => {
-
-  }
-
   const signUpHandeler = async () => {
     try {
       const res = await signUpwithEmailPassWord(email, password);
