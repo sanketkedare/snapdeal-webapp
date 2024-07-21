@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import RecentProductCart from "../FrontPage/RecentProductCart";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../Redux/productSlice";
 import Loader from "../FrontPage/Loader";
 
@@ -12,19 +12,7 @@ import Loader from "../FrontPage/Loader";
  */
 
 const TrendingProducts = () => {
-  const [data, setData] = useState(null);
-  const dispatch = useDispatch();
-
-  const getRecentProducts = async () => {
-    const response = await fetch(process.env.REACT_APP_PRODUCT_API);
-    const JSON = await response.json();
-    dispatch(setProducts(JSON));
-    setData(JSON);
-  };
-
-  useEffect(() => {
-    getRecentProducts();
-  }, []);
+  const data = useSelector((state)=>state.product);
 
   return (
     <div className="h-[60vh] lg:w-[90%] m-auto ">

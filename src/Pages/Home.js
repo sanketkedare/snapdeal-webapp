@@ -5,7 +5,7 @@
  * All components are created in Saperate folder in Components directory.
  */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
 import Footer from "../Components/Footer/Footer";
 import FrontPage from "../Components/FrontPage/FrontPage";
@@ -13,14 +13,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../Redux/cartSlice";
 import { addToShort } from "../Redux/shortListSlice";
 import { fetchSelected } from "../Utils/fetchSelected";
+import useProduct from "../Hooks/useProduct";
+import { setProducts } from "../Redux/productSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
+
   const cartData = useSelector((state) => state.cart);
   const shortData = useSelector((state) => state.short);
   const currentUser = useSelector((state) => state.user);
   const CART_API = process.env.REACT_APP_CART;
   const SHORT_API = process.env.REACT_APP_SHORT;
+
+  const getAllProducts = async() => {
+    const data = await useProduct();
+    dispatch(setProducts(data));
+  };
 
   const updateStore = (cart, short) => {
     dispatch(addToCart(...cart));
@@ -52,27 +60,27 @@ const Home = () => {
     });
   };
 
-  const updateDB_Short = async (data) => 
-  {
+  const updateDB_Short = async (data) => {
     const body = { userEmail: currentUser.user.email, short: data };
     await fetch(SHORT_API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-
-  }
+  };
 
   useEffect(() => {
     currentUser.isAuthenticated && updateDB_Cart(cartData);
   }, [cartData]);
-  useEffect(()=>{
+  useEffect(() => {
     currentUser.isAuthenticated && updateDB_Short(shortData);
-  },[shortData])
+  }, [shortData]);
   useEffect(() => {
     currentUser.isAuthenticated && getFromDB();
   }, [currentUser]);
-
+  useEffect(() => {
+    getAllProducts();
+  }, []);
   return (
     <div className="bg-[#f0eeee]  overflow-hidden ">
       <NavBar />
