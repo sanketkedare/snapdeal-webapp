@@ -4,7 +4,7 @@ import { FaRegHeart, FaHeart } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { addToShort } from "../../Redux/shortListSlice";
 import { Link } from "react-router-dom";
-import { setCurrentProduct } from "../../Redux/currentProductSlice";
+import { getPath } from "../../Utils/getPath";
 
 
 // Recent Products Cart
@@ -29,17 +29,15 @@ const RecentProductCart = ({ item}) => {
     }
 };
 
-const addToCurrentProduct = () => dispatch(setCurrentProduct(item));
 
 
 
   return (
     <Link
-    to={`/products/${item.category}/${item.id}`}
+    to={getPath(item)}
       className="relative w-[500px] border px-3 p-2 rounded-2xl shadow-xl"
       onMouseEnter={() => setShowHeart(true)}
       onMouseLeave={() => setShowHeart(false)}
-      onClick={addToCurrentProduct}
     >
 
       {Authenticated && showHeart &&

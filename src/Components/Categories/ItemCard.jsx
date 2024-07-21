@@ -8,7 +8,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { addToShort } from "../../Redux/shortListSlice";
 import { addToCart, removeFromCart } from "../../Redux/cartSlice";
 import { Link, Navigate } from "react-router-dom";
-import { setCurrentProduct } from "../../Redux/currentProductSlice";
+import { getPath } from "../../Utils/getPath";
 
 /**
  * Item Component
@@ -47,8 +47,7 @@ const ItemCard = ({ item }) => {
     }
   };
 
-  // Set current product
-  const addToCurrentProduct = () => dispatch(setCurrentProduct(item));
+
 
   useEffect(() => {
     const isItemInCart = cartItems.some((i) => i.id === item.id);
@@ -61,8 +60,7 @@ const ItemCard = ({ item }) => {
 
   return (
     <Link
-      to={`/products/${item.category}/${item.id}`}
-      onClick={addToCurrentProduct}
+      to={getPath(item)}
       className="lg:w-[250px] w-[170px] lg:h-[500px] h-[350px] bg-white shadow-sm hover:shadow-2xl text-black rounded-2xl p-2 mb-3 m-auto relative"
       onMouseEnter={() => setShowHeart(true)}
       onMouseLeave={() => setShowHeart(false)}

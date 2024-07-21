@@ -3,7 +3,6 @@ import userReducer from './userSlice'
 import cartReducer from './cartSlice'
 import shortReducer from './shortListSlice'
 import categoryReducer from './categorySlice'
-import currentProductReducer from "./currentProductSlice"
 import productReducer from './productSlice'
 
 const appStore = configureStore({
@@ -13,7 +12,6 @@ const appStore = configureStore({
       cart: cartReducer,
       short:shortReducer,
       path: categoryReducer,
-      curr: currentProductReducer,
     },
   });
   

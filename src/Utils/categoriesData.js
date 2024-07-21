@@ -11,7 +11,7 @@ export const data = [
     },
     {
       name: "Men's Clothing",
-      path:"Menwear",
+      path:"menwear",
       img: 'https://n1.sdlcdn.com/imgs/k/v/x/Men_sitenavigation-b972a.jpg'
     },
     { 
