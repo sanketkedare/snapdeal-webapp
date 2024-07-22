@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { setPath } from "../../Redux/categorySlice";
 import { getPath } from "../../Utils/getPath";
 
-const SearchBox = ({ setBoxOpen, inputValue }) => {
+const SearchBox = ({ setBoxOpen, inputValue }) => 
+{
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const closeBox = () => setBoxOpen(false);
