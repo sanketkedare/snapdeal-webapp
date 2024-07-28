@@ -32,7 +32,7 @@ const SearchBox = ({ setBoxOpen, inputValue }) => {
       return;
     }
     const filteredData = data.filter((item) =>
-      item.title.toLowerCase().includes(inputValue.toLowerCase())
+      item.title.toLowerCase().includes(inputValue.toLowerCase()) || item.category.toLowerCase().includes(inputValue.toLowerCase())
     );
     setResult(filteredData);
   };
@@ -62,6 +62,7 @@ const SearchBox = ({ setBoxOpen, inputValue }) => {
             <SearchOptions
               item={item}
               key={item.id}
+              inputValue={inputValue}
               showProduct={showProduct}
             />
           ))}

@@ -6,7 +6,6 @@
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
-import Authentication from "./Pages/Authentication";
 import Products from "./Pages/Products";
 import Cart from "./Pages/Cart";
 import ShortLists from "./Pages/ShortLists";
@@ -15,6 +14,7 @@ import SingleProduct from "./Components/Product/SingleProduct";
 import Login from "./Pages/Login";
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>
@@ -29,7 +29,6 @@ function App() {
             </Route>
           </Route>
         </Route>
-        <Route path="/auth" element={<Authentication />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/mywhishlist" element={<ShortLists />} />
       </Routes>

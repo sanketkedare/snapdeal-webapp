@@ -1,7 +1,7 @@
-// Navbar Buttons
-// NavBar Buttons with dynamic dropdown
+// NavButtons Component
+// Contains Cart and Authentication buttons
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import Authentication from "../Authentication/Authentication";
@@ -11,47 +11,45 @@ import NavDropdown from "./NavDropdown";
 import { useSelector } from "react-redux";
 
 const NavButtons = () => {
-  const [userLoggedIn, setUserLoggedIn] = useState(null);
+  const currentUser = useSelector((state) => state.user);
+  const isAuthenticated = currentUser.isAuthenticated;
+  const cartItemCount = useSelector((state) => state.cart.length);
   const [showAuth, setShowAuth] = useState(false);
-  const [show, setShow] = useState(false);
-  const Authenticated = useSelector((state) => state.user.isAuthenticated);
-  const data = useSelector((state) => state.cart);
-
+  const [showDropdown, setShowDropdown] = useState(false);
   const [blink, setBlink] = useState(false);
 
-  const blinkCart = () => {
-    setTimeout(() => {
-      setBlink(true);
-    }, 300);
-    setBlink(false);
-  };
-
   useEffect(() => {
-    blinkCart();
-  }, [data]);
+    setBlink(true);
+    const timeout = setTimeout(() => setBlink(false), 1000);
+    return () => clearTimeout(timeout);
+  }, [cartItemCount]);
 
   return (
     <div className="lg:flex lg:gap-8 text-[#ffffff] h-full relative items-center">
       {showAuth && <Authentication setShowAuth={setShowAuth} />}
-
-      <Link to={Authenticated ? "/cart" : "/login"}>
-        <button className="text-[10px] m-auto lg:text-sm flex justify-center items-center gap-2 font-semibold lg:bg-inherit bg-white lg:text-white text-black hover:bg-gray-100 hover:text-black py-1 lg:p-2 lg:px-4 px-2 rounded-xl">
-          Cart <AiOutlineShoppingCart className={`text-[10px] font-bold lg:text-lg hover:text-black ${!blink ? 'text-green-600': 'text-inherit'}`} />
+      <Link to={isAuthenticated ? "/cart" : "/login"}>
+        <button
+          className={`text-[10px] m-auto lg:text-sm flex justify-center items-center gap-2 font-semibold
+            ${blink ? "bg-green-400 lg:text-black" : "bg-inherit lg:text-white"}
+            hover:bg-gray-100 hover:text-black py-1 lg:p-2 lg:px-4 px-2 rounded-xl shadow-xl`}
+        >
+          Cart
+          <AiOutlineShoppingCart className="text-[10px] font-bold lg:text-lg hover:text-black" />
         </button>
       </Link>
 
       {/* Authentication */}
       <button
         className="flex justify-center items-center gap-2 font-semibold lg:px-2 pt-1 lg:py-2 hover:bg-black h-full relative rounded-t-xl capitalize lg:text-sm lg:w-[200px] w-[100px]"
-        onMouseEnter={() => setShow(true)}
-        onMouseLeave={() => setShow(false)}
+        onMouseEnter={() => setShowDropdown(true)}
+        onMouseLeave={() => setShowDropdown(false)}
       >
         <h1 className="lg:text-sm overflow-hidden text-[10px]">
-          {userLoggedIn ? trimName(userLoggedIn.email) : "Sign in"}
+          {isAuthenticated ? trimName(currentUser.user.email) : "Sign in"}
         </h1>
-        <CgProfile className="text-lg lg:text-[30px] bg-gray-500 p-1 rounded-full" />
-        {show && (
-          <NavDropdown setShowAuth={setShowAuth} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
+        <CgProfile className="text-lg lg:text-[30px] bg-gray-500 p-1 rounded-full"/>
+        {showDropdown && (
+          <NavDropdown setShowAuth={setShowAuth} isAuthenticated={isAuthenticated} />
         )}
       </button>
     </div>

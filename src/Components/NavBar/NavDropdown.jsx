@@ -1,32 +1,33 @@
-/*eslint-disable*/
+// NavDropdown Component
+// Dropdown menu for user actions
+
 import React, { useEffect } from "react";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import { FaGift, FaRegHeart } from "react-icons/fa";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import app from "../../Utils/firebase";
 import { Link } from "react-router-dom";
-import { login, logout } from "../../Redux/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../Redux/userSlice";
+import { useDispatch} from "react-redux";
 
-const NavDropdown = ({ setShowAuth, userLoggedIn, setUserLoggedIn }) => {
+const NavDropdown = ({ setShowAuth, isAuthenticated }) => {
   const dispatch = useDispatch();
-  const Authenticated = useSelector((state) => state.user.isAuthenticated);
-
   const auth = getAuth(app);
-  const loggout = () => signOut(auth);
+
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      dispatch(logout());
+    });
+  };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        dispatch(login(user));
-        setUserLoggedIn(user);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
         setShowAuth(false);
-      } else {
-        dispatch(logout());
-        setUserLoggedIn(null);
       }
     });
-  }, []);
+    return () => unsubscribe();
+  }, [auth, setShowAuth]);
 
   return (
     <div className="z-50 absolute w-[200px] bg-black top-10 rounded-b-xl shadow-md right-0 py-4 text-white">
@@ -40,7 +41,7 @@ const NavDropdown = ({ setShowAuth, userLoggedIn, setUserLoggedIn }) => {
             <FaGift />
             Your Orders
           </ul>
-          <Link to={Authenticated ? "/mywhishlist" : "/login"}>
+          <Link to={isAuthenticated ? "/mywhishlist" : "/login"}>
             <ul className="flex gap-4 text-sm items-center my-3 text-gray-300">
               <FaRegHeart />
               Shortlists
@@ -49,10 +50,10 @@ const NavDropdown = ({ setShowAuth, userLoggedIn, setUserLoggedIn }) => {
         </div>
       </div>
       <hr className="w-[90%] m-auto" />
-      {userLoggedIn ? (
+      {isAuthenticated ? (
         <button
           className="p-2 w-[80%] m-auto bg-red-700 text-white px-4 rounded-xl my-4"
-          onClick={loggout}
+          onClick={handleLogout}
         >
           Log Out
         </button>
@@ -60,7 +61,7 @@ const NavDropdown = ({ setShowAuth, userLoggedIn, setUserLoggedIn }) => {
         <div className="w-[90%] flex items-center justify-center m-auto">
           <div className="py-2 m-auto">
             <p className="text-center text-sm text-gray-500 pt-2">
-              If You are new user
+              If you are a new user
             </p>
             <h1
               className="text-center text-[15px] font-semibold my-2"

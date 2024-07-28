@@ -1,11 +1,11 @@
-/*eslint-disable*/
+/* eslint-disable */
 /**
  * Home Page
- * Contains the Navbar, Front Page and Footer Component.
- * All components are created in Saperate folder in Components directory.
+ * Contains the Navbar, Front Page, and Footer Components.
+ * All components are created in separate folders in the Components directory.
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import NavBar from "../Components/NavBar/NavBar";
 import Footer from "../Components/Footer/Footer";
 import FrontPage from "../Components/FrontPage/FrontPage";
@@ -18,14 +18,13 @@ import { setProducts } from "../Redux/productSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
-
   const cartData = useSelector((state) => state.cart);
   const shortData = useSelector((state) => state.short);
-  const currentUser = useSelector((state) => state.user);
+  const { user, isAuthenticated } = useSelector((state) => state.user);
   const CART_API = process.env.REACT_APP_CART;
   const SHORT_API = process.env.REACT_APP_SHORT;
 
-  const getAllProducts = async() => {
+  const getAllProducts = async () => {
     const data = await useProduct();
     dispatch(setProducts(data));
   };
@@ -36,7 +35,7 @@ const Home = () => {
   };
 
   const getFromDB = async () => {
-    const userEmail = currentUser.user.email;
+    const userEmail = user.email;
     const queryParams = new URLSearchParams({ userEmail });
     const cartResponse = await fetchSelected(CART_API, queryParams);
     const shortResponse = await fetchSelected(SHORT_API, queryParams);
@@ -51,8 +50,7 @@ const Home = () => {
   };
 
   const updateDB_Cart = async (data) => {
-    // POST
-    const body = { userEmail: currentUser.user.email, cart: data };
+    const body = { userEmail: user.email, cart: data };
     await fetch(CART_API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -61,7 +59,7 @@ const Home = () => {
   };
 
   const updateDB_Short = async (data) => {
-    const body = { userEmail: currentUser.user.email, short: data };
+    const body = { userEmail: user.email, short: data };
     await fetch(SHORT_API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -70,19 +68,23 @@ const Home = () => {
   };
 
   useEffect(() => {
-    currentUser.isAuthenticated && updateDB_Cart(cartData);
+    if (isAuthenticated) updateDB_Cart(cartData);
   }, [cartData]);
+
   useEffect(() => {
-    currentUser.isAuthenticated && updateDB_Short(shortData);
+    if (isAuthenticated) updateDB_Short(shortData);
   }, [shortData]);
+
   useEffect(() => {
-    currentUser.isAuthenticated && getFromDB();
-  }, [currentUser]);
+    if (isAuthenticated) getFromDB();
+  }, [isAuthenticated]);
+
   useEffect(() => {
     getAllProducts();
   }, []);
+
   return (
-    <div className="bg-[#f0eeee]  overflow-hidden ">
+    <div className="bg-[#f0eeee] overflow-hidden">
       <NavBar />
       <FrontPage />
       <Footer />
