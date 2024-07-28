@@ -15,7 +15,7 @@ const Login = () => {
 
 
   return (
-    <div className='h-screen bg-gradient-to-b from-sky-400 to-black via-blue-800'>
+    <div className='bg-gradient-to-b from-white  via-sky-100 to-sky-200'>
       <LoginNavbar />
       <LoginPage/>
     </div>

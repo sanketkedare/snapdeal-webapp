@@ -36,56 +36,63 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="relative h-full mt-12 px-20 py-10">
-      <div className="absolute right-24 h-[90vh] w-1/2 flex items-center justify-center">
-        <div className="shadow-xl p-3 px-20 rounded-xl border-2">
+    <div className="relative mt-12 px-20 py-10 backdrop-blur-lg h-screen">
+      <div className="absolute right-24 h-[80vh] w-2/3 flex items-center justify-center py-2">
+        <div className="p-3 px-20 rounded-xl w-full">
           <div>
-            <p className="text-gray-900 text-2xl italic font-semibold">
+            <p className="text-gray-900 text-md italic font-semibold">
               Hey, You are not logged in..!
             </p>
-            <p className="font-bold text-3xl">
-              Please Login / Register here..!
-            </p>
+            <p className="font-bold text-xl">Please Login / Register here..!</p>
           </div>
 
-          <div className="my-5 m-auto rounded-xl shadow-md">
-            <label className="block font-bold text-left p-2 m-2" htmlFor="email">
-              Email Id:
-            </label>
-            <input
-              className="my-5 p-2 px-3 m-3 rounded-xl w-1/2"
-              type="email"
-              id="email"
-              placeholder="Enter your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <br />
-            <label className="block font-bold text-left p-2 m-2" htmlFor="password">
-              Password:
-            </label>
-            <input
-              className="my-5 p-2 px-3 m-3 rounded-xl w-1/2"
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+          <div className="my-5 m-auto rounded-xl shadow-md p-5">
+            <div className="flex items-center mb-5">
+              <label
+                className="font-bold text-left p-2 uppercase w-1/4"
+                htmlFor="email"
+              >
+                Email Id:
+              </label>
+              <input
+                className="p-2 px-3 rounded-xl w-3/4 border border-black"
+                type="email"
+                id="email"
+                placeholder="Enter your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="flex items-center">
+              <label
+                className="font-bold text-left p-2 uppercase w-1/4"
+                htmlFor="password"
+              >
+                Password:
+              </label>
+              <input
+                className="p-2 px-3 rounded-xl w-3/4 border border-black"
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
           </div>
 
           <div className="rounded-xl shadow-xl py-5">
-            <div className="w-full flex justify-around">
+            <div className="w-[80%] m-auto flex justify-around">
               <button
-                className="w-40 text-xl font-semibold bg-sky-300 hover:bg-green-400 shadow-lg rounded-xl p-2 m-2 text-center"
+                className="w-1/3 text-xl font-semibold bg-sky-300 hover:bg-green-400 shadow-lg rounded-xl p-2 m-2 text-center"
                 onClick={signInHandler}
               >
                 Log In
               </button>
               <button
-                className="w-40 text-xl font-semibold bg-red-500 hover:bg-red-600 hover:text-white shadow-lg rounded-xl p-2 m-2 text-center"
+                className="w-1/3 text-xl font-semibold bg-red-500 hover:bg-red-600 hover:text-white shadow-lg rounded-xl p-2 m-2 text-center"
                 onClick={signUpHandler}
               >
                 Sign Up
@@ -94,7 +101,7 @@ const LoginPage = () => {
 
             <button
               onClick={signUpWithGoogle}
-              className="w-88 my-2 flex items-center m-auto gap-3 justify-center text-xl font-semibold shadow-lg rounded-xl p-2 text-center bg-white hover:shadow-md hover:shadow-green-500"
+              className="w-[80%] my-4 flex items-center m-auto gap-3 justify-center text-xl font-semibold shadow-lg rounded-xl p-2 text-center bg-white hover:shadow-md hover:shadow-green-500"
             >
               <FcGoogle />
               Sign up with Google
@@ -109,8 +116,8 @@ const LoginPage = () => {
         </div>
       </div>
 
-      <div className="p-3 px-5 h-[90vh] bg-gray-200 bg-opacity-5 rounded-3xl">
-        <img alt="login" src="/login.png" />
+      <div className=" w-1/3 px-5 h-[80vh] bg-gray-200 bg-opacity-5 rounded-3xl -rotate-12">
+        <img alt="login" src="/login.png"  className="rounded-l-full shadow-lg mt-16 p-3 w-[350px]"/>
       </div>
     </div>
   );
