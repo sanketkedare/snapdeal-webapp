@@ -11,53 +11,33 @@ import NavBar from "../Components/NavBar/NavBar";
 import Footer from "../Components/Footer/Footer";
 import FrontPage from "../Components/FrontPage/FrontPage";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../Redux/cartSlice";
 import { addToShort } from "../Redux/shortListSlice";
 import { fetchSelected } from "../Utils/fetchSelected";
-import { setProducts } from "../Redux/productSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const cartData = useSelector((state) => state.cart);
   const shortData = useSelector((state) => state.short);
   const { user, isAuthenticated } = useSelector((state) => state.user);
-  const CART_API = process.env.REACT_APP_CART;
   const SHORT_API = process.env.REACT_APP_SHORT;
 
-  const getAllProducts = async () => {
-    const response = await fetch(process.env.REACT_APP_PRODUCT_API);
-    const data = await response.json();
-    dispatch(setProducts(data));
-  };
-
-  const updateStore = (cart, short) => {
-    dispatch(addToCart(...cart));
+  const updateStore = (short) => {
     dispatch(addToShort(...short));
   };
 
   const getFromDB = async () => {
     const userEmail = user.email;
     const queryParams = new URLSearchParams({ userEmail });
-    const cartResponse = await fetchSelected(CART_API, queryParams);
     const shortResponse = await fetchSelected(SHORT_API, queryParams);
 
-    if (cartResponse.ok && shortResponse.ok) {
-      const jsonResponse_cart = await cartResponse.json();
+    if (shortResponse.ok) {
       const jsonResponse_short = await shortResponse.json();
-      updateStore(jsonResponse_cart, jsonResponse_short);
+      updateStore(jsonResponse_short);
     } else {
-      console.error("Failed to fetch cart/short from DB:");
+      console.error("Failed to fetch short from DB:");
     }
   };
 
-  const updateDB_Cart = async (data) => {
-    const body = { userEmail: user.email, cart: data };
-    await fetch(CART_API, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-  };
+
 
   const updateDB_Short = async (data) => {
     const body = { userEmail: user.email, short: data };
@@ -69,10 +49,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated) updateDB_Cart(cartData);
-  }, [cartData]);
-
-  useEffect(() => {
     if (isAuthenticated) updateDB_Short(shortData);
   }, [shortData]);
 
@@ -80,9 +56,6 @@ const Home = () => {
     if (isAuthenticated) getFromDB();
   }, [isAuthenticated]);
 
-  useEffect(() => {
-    getAllProducts();
-  }, []);
 
   return (
     <div className="bg-[#f0eeee] overflow-hidden">

@@ -12,15 +12,25 @@ import Loader from "../FrontPage/Loader";
  */
 
 const TrendingProducts = () => {
-  const data = useSelector((state)=>state.product);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.product);
   
+  const updateStore = async () => {
+    const response = await fetch(process.env.REACT_APP_PRODUCT_API);
+    const data = await response.json();
+    dispatch(setProducts(data));
+  };
+  useEffect(() => {
+    updateStore();
+  }, []);
+
   return (
     <div className="h-[60vh] lg:w-[90%] m-auto ">
       <h1 className="font-semibold my-10 p-50 text-sm pl-4">
         TRENDING PRODUCTS
       </h1>
       <div className="no-scrollbar h-[80%] p-4 py-5 bg-white rounded-lg shadow-sm flex flex-row-reverse gap-2 overflow-x-auto ">
-        {data !== null ? (
+        {data ? (
           data.map((item) => <RecentProductCart key={item.id} item={item} />)
         ) : (
           <Loader />
