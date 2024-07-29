@@ -13,7 +13,7 @@ import Loader from "../FrontPage/Loader";
 
 const TrendingProducts = () => {
   const data = useSelector((state)=>state.product);
-
+  
   return (
     <div className="h-[60vh] lg:w-[90%] m-auto ">
       <h1 className="font-semibold my-10 p-50 text-sm pl-4">
