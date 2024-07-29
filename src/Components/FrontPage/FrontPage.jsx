@@ -2,7 +2,7 @@
  * Front Page Component
  * Contains Multiple range of a Components
  * Categories - Section have multiple options for each category
- * Home Section of a web page at path '/' 
+ * Home Section of a web page at path '/'
  * and changes components dynamically according to path from category
  */
 
@@ -10,11 +10,9 @@ import React from "react";
 import Categories from "./Categories";
 import TrendingProducts from "../TrendingProducts/TrendingProducts";
 import Advertisement from "../Advertisement/Advertisement";
-import LocationComponent from "../TrendingProducts/LocationComponent";
-import OptionsSlider from "../Slider/OptionsSlider";
-import RecentProducts from "./RecentProducts";
 import Features from "./Features";
 import { Outlet, useLocation } from "react-router-dom";
+import HeaderComponent from "./HeaderComponent";
 
 const FrontPage = () => {
   const { pathname } = useLocation();
@@ -22,20 +20,7 @@ const FrontPage = () => {
     <>
       <div className="lg:w-[90%] m-auto lg:flex gap-2 mt-20 rounded-sm shadow-sm">
         <Categories />
-        {pathname === "/" ? (
-          <div className="bg-[#ffff] shadow-sm lg:w-[85%] p-3 rounded-lg">
-            <div className="lg:flex lg:h-[50%] justify-between lg:my-auto my-10">
-              <div className="lg:w-3/4 lg:mb-0 mb-20">
-                <OptionsSlider />
-              </div>
-              <LocationComponent />
-            </div>
-
-            <RecentProducts />
-          </div>
-        ) : (
-          <Outlet />
-        )}
+        {pathname === "/" ? <HeaderComponent /> : <Outlet />}
       </div>
       <TrendingProducts />
       <Advertisement />

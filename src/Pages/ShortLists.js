@@ -4,6 +4,8 @@ import NavBar from "../Components/NavBar/NavBar";
 import Footer from "../Components/Footer/Footer";
 import TrendingProducts from "../Components/TrendingProducts/TrendingProducts";
 
+// ShortLists Page
+
 const ShortLists = () => 
 {
   return (

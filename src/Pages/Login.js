@@ -4,6 +4,7 @@ import LoginNavbar from "../Components/Login/LoginNavbar";
 import { useSelector } from "react-redux";
 import LoginPage from "../Components/Login/LoginPage";
 
+// Login Page
 const Login = () => {
   const Authenticated = useSelector((state) => state.user.isAuthenticated);
   if ( Authenticated) {

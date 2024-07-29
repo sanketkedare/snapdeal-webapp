@@ -1,5 +1,7 @@
 import React from 'react'
 
+// Footer Component
+
 const Footer = () => {
   return (
     <div className='flex w-[90%] m-auto justify-between items-center py-4  text-gray-600 lg:text-sm text-[8px]'>

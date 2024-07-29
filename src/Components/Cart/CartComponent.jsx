@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import ItemCard from "../Categories/ItemCard";
 import { FaCartArrowDown } from "react-icons/fa";
 
+// Cart Component
+
 const CartComponent = () => {
   const data = useSelector((state) => state.cart);
-
+  console.log(data);
 
   return (
     <div className="w-[90%] mt-24  m-auto">

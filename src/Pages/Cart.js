@@ -4,6 +4,7 @@ import NavBar from "../Components/NavBar/NavBar";
 import Footer from "../Components/Footer/Footer";
 import TrendingProducts from "../Components/TrendingProducts/TrendingProducts";
 
+// Cart Page
 const Cart = () => {
   return (
     <div>

@@ -26,7 +26,7 @@ const NavButtons = () => {
 
   return (
     <div className="lg:flex lg:gap-8 text-[#ffffff] h-full relative items-center">
-      {showAuth && <Authentication setShowAuth={setShowAuth} />}
+      {showAuth && <Authentication setShowAuth={setShowAuth} /> }
       <Link to={isAuthenticated ? "/cart" : "/login"}>
         <button
           className={`text-[10px] m-auto lg:text-sm flex justify-center items-center gap-2 font-semibold

@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 
 
-// Products Component
+// Products Page
 // Used to Dynamically rendering the components by path '/products/'
 
 const Products = () => {

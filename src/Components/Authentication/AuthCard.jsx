@@ -12,29 +12,32 @@ const AuthCard = ({ setShowAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   const signUpHandeler = async () => {
     try {
       await signUpwithEmailPassWord(email, password);
       await register(email, password);
       setShowAuth(false);
-    } catch (err) 
-    {
+    } catch (err) {
       console.log("error", err);
-
     }
   };
 
-  const signInHandeler = async () => 
-  {
+  const signInHandeler = async () => {
     try {
-    await logInWithEmailAndPassword(email, password);
-    setShowAuth(false);
+      await logInWithEmailAndPassword(email, password);
+      setShowAuth(false);
     } catch (error) {
       console.log("error", error);
-      
     }
-    
+  };
+
+  const googleLogin = async () => {
+    await setShowAuth(false);
+    try {
+      signUpWithGoogle();
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   return (
@@ -58,7 +61,6 @@ const AuthCard = ({ setShowAuth }) => {
           className="w-full my-4 p-2 py-4"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
         <input
           type="password"
@@ -66,7 +68,6 @@ const AuthCard = ({ setShowAuth }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full mb-4 p-2 py-4"
-          required
         />
 
         <div className="flex items-center justify-between gap-2">
@@ -91,7 +92,7 @@ const AuthCard = ({ setShowAuth }) => {
           </p>
           <button
             className="shadow-2xl w-full text-center border border-black p-2 my-2 relative"
-            onClick={signUpWithGoogle}
+            onClick={googleLogin}
           >
             <FcGoogle className="absolute text-xl" />
             Google

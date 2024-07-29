@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import ItemCard from "../Components/Categories/ItemCard";
 import { Outlet, useLocation } from "react-router-dom";
 
+// Categories Page
+
 const Categories = () => {
   const {pathname} = useLocation();
   const [data, setData] = useState(null);
