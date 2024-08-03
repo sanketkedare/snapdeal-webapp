@@ -48,6 +48,7 @@ const Home = () => {
     });
   };
 
+  
   useEffect(() => {
     if (isAuthenticated) updateDB_Short(shortData);
   }, [shortData]);

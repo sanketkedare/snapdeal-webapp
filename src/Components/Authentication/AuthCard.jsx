@@ -7,6 +7,7 @@ import {
   signUpWithGoogle,
 } from "./firebaseAuth";
 import { register } from "../../Utils/register";
+import { motion } from "framer-motion";
 
 const AuthCard = ({ setShowAuth }) => {
   const [email, setEmail] = useState("");
@@ -41,7 +42,11 @@ const AuthCard = ({ setShowAuth }) => {
   };
 
   return (
-    <div className=" bg-white border  absolute rounded-xl shadow-md z-30 lg:w-[400px] w-[350px] h-[500px] -bottom-56 -right-44 lg:-right-72 px-8 flex justify-center items-center">
+    <motion.div
+    initial={{ opacity: 1, x: 100 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 1.0 }}
+     className=" bg-white border  absolute rounded-xl shadow-md z-30 lg:w-[400px] w-[350px] h-[500px] -bottom-56 -right-44 lg:-right-72 px-8 flex justify-center items-center">
       <div>
         <IoCloseSharp
           className="absolute right-2 top-2 bg-white p-1 text-[30px] rounded-full shadow-lg"
@@ -99,7 +104,7 @@ const AuthCard = ({ setShowAuth }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

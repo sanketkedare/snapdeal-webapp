@@ -6,6 +6,7 @@ import Rating from "../FrontPage/RatingComponent";
 import { IoIosCart } from "react-icons/io";
 import { addToCart, removeFromCart } from "../../Redux/cartSlice";
 import { Navigate, useLocation } from "react-router-dom";
+import SingleProductLoader from "./SingleProductLoader";
 
 const SingleProduct = () => {
   const { pathname } = useLocation();
@@ -81,7 +82,7 @@ const SingleProduct = () => {
           </div>
         </>
       ) : (
-        "Loading"
+        <SingleProductLoader/>
       )}
     </div>
   );

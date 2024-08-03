@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { IoIosCart } from "react-icons/io";
 import Rating from "../FrontPage/RatingComponent";

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RecentProductCart from "./RecentProductCart";
 import Loader from "./Loader";
+import { motion } from "framer-motion";
 
 const RecentProducts = () => {
   const [data, setData] = useState(null);
@@ -20,12 +21,18 @@ const RecentProducts = () => {
       <h1 className="font-semibold my-5 uppercase text-sm">
         Recently Viewed PRODUCTS
       </h1>
-      <div className="relative w-full h-3/4 flex gap-3 mb-2 overflow-x-auto  py-4 p-2">
-        {data !==null ?
+      <motion.div
+        className="relative w-full h-3/4 flex gap-3 mb-2 overflow-x-auto  py-4 p-2"
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        {data !== null ? (
           data.map((item) => <RecentProductCart key={item.id} item={item} />)
-          : <Loader/>
-          }
-      </div>
+        ) : (
+          <Loader />
+        )}
+      </motion.div>
     </div>
   );
 };

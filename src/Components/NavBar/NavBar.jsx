@@ -3,6 +3,7 @@
 // Contains Logo, Search Component, and Navbar Buttons
 
 import React, { useEffect } from "react";
+import { motion } from 'framer-motion';
 import NavButtons from "./NavButtons";
 import NavLogo from "./NavLogo";
 import SearchComponent from "./SearchComponent";
@@ -27,13 +28,19 @@ const NavBar = () => {
   }, [auth, dispatch]);
 
   return (
-    <div className="bg-[#e40046] text-[#ffffff] top-0 py-3 fixed z-50 w-full">
+    <motion.div
+      id="navbar"
+      className="bg-[#e40046] text-[#ffffff] top-0 py-3 fixed z-50 w-full rounded-b-2xl"
+      initial={{ y: -50 }}
+      animate={{ y: 0 }}
+      transition={{ stiffness: 100 }}
+    >
       <div className="flex justify-between items-center lg:w-[90%] m-auto">
         <NavLogo />
         <SearchComponent />
         <NavButtons />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
